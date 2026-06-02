@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="1_V0UjCGwSlFUeWO30JwbyDZk823U-sBA">
+	<name>Gravity Survey, Howelsen Hill Onyx Mine, 05-27-26</name>
+	<Schema name="__managed_schema" id="__managed_schema">
+		<SimpleField type="int" name="1C3D82A8303FA0827236">
+			<displayName>Accuracy (m)</displayName>
+		</SimpleField>
+		<SimpleField type="int" name="13A43795673FA07E9A40">
+			<displayName>Accuracy (m)</displayName>
+		</SimpleField>
+		<SimpleField type="int" name="0FE2DE77333F9FFE7BD0">
+			<displayName>Accuracy (m)</displayName>
+		</SimpleField>
+	</Schema>
+	<gx:CascadingStyle kml:id="__managed_style_02DE72E63B3FA0C9AE7C_highlight">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_02DE72E63B3FA0C9AE7C_normal">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.33333</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_02DE72E63B3FA0C9AE7C">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_02DE72E63B3FA0C9AE7C_normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_02DE72E63B3FA0C9AE7C_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_0B0203DC903FA0C9AE7B_normal">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.33333</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0B0203DC903FA0C9AE7B_highlight">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0B0203DC903FA0C9AE7B">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_0B0203DC903FA0C9AE7B_normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0B0203DC903FA0C9AE7B_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="07CE34D15D3F9FF5926B">
+		<name>Potential mine shaft entrance</name>
+		<LookAt>
+			<longitude>-106.8352318122264</longitude>
+			<latitude>40.47886097421826</latitude>
+			<altitude>2116.144895397391</altitude>
+			<heading>358.9997468345981</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>116.832646215953</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0B0203DC903FA0C9AE7B</styleUrl>
+		<Point>
+			<coordinates>-106.8352318122264,40.47886097421826,2116.144895397391</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="02C005C86D3F9FFE7BCF">
+		<name>GPS Base Station (approx)</name>
+		<LookAt>
+			<longitude>-106.8356884306769</longitude>
+			<latitude>40.4786866298012</latitude>
+			<altitude>2125.159535646115</altitude>
+			<heading>358.9997449416218</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>62.25963842821329</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02DE72E63B3FA0C9AE7C</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="0FE2DE77333F9FFE7BD0">0</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<extrude>1</extrude>
+			<coordinates>-106.8356983463902,40.47871832876928,2125.032650239156</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="025A60CB5E3FA07E9A40">
+		<name>Approx location of pt #15 (middle)</name>
+		<LookAt>
+			<longitude>-106.8355282418828</longitude>
+			<latitude>40.47883531931866</latitude>
+			<altitude>2122.733094956487</altitude>
+			<heading>160.1813864320495</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>65.92658380612194</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0B0203DC903FA0C9AE7B</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="13A43795673FA07E9A40">0</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<extrude>1</extrude>
+			<coordinates>-106.8355009194199,40.47879119854986,2122.92151104159</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="01324FEECC3FA0827236">
+		<name>Approx location of pt #29</name>
+		<LookAt>
+			<longitude>-106.8356030786834</longitude>
+			<latitude>40.47885066460754</latitude>
+			<altitude>2123.046738578238</altitude>
+			<heading>88.35754506130021</heading>
+			<tilt>0</tilt>
+			<gx:fovy>34.5492518351539</gx:fovy>
+			<range>77.69550819943106</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02DE72E63B3FA0C9AE7C</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="1C3D82A8303FA0827236">0</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<extrude>1</extrude>
+			<coordinates>-106.8355801315628,40.47887997556361,2122.615277904107</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>
