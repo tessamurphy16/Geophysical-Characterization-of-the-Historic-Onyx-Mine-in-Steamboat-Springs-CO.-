@@ -381,22 +381,17 @@ def apply_instrument_tie_correction(
 
 def read_gps_elevations(gps_csv_path):
     """
-    Reads GPS CSV and returns station/elevation table.
-
-    Uses:
-    - Name = station position
-    - Ellipsoidal height = elevation in meters
+    Reads GPS CSV with columns:
+    station, Longitude, Latitude, elevation_m
     """
     gps = pd.read_csv(gps_csv_path)
 
-    gps_elev = gps[["Name", "Ellipsoidal height", "Latitude", "Longitude"]].copy()
+    gps_elev = gps[["station", "Longitude", "Latitude", "elevation_m"]].copy()
 
     gps_elev = gps_elev.rename(
         columns={
-            "Name": "station",
-            "Ellipsoidal height": "elevation_m",
-            "Latitude": "latitude",
             "Longitude": "longitude",
+            "Latitude": "latitude",
         }
     )
 
@@ -407,18 +402,6 @@ def read_gps_elevations(gps_csv_path):
     gps_elev = gps_elev.sort_values("station").reset_index(drop=True)
 
     return gps_elev
-
-
-def merge_gravity_with_gps(tied_profile, gps_csv_path):
-    gps_elev = read_gps_elevations(gps_csv_path)
-
-    merged = tied_profile.merge(
-        gps_elev,
-        on="station",
-        how="left"
-    )
-
-    return merged, gps_elev
 
 
 def apply_free_air_and_bouguer(
@@ -470,3 +453,26 @@ def apply_free_air_and_bouguer(
     )
 
     return df
+
+def merge_gravity_with_gps(tied_profile, gps_csv_path):
+    """
+    Merges instrument-tied gravity data with GPS elevation data.
+
+    Required GPS columns:
+    station, Longitude, Latitude, elevation_m
+    """
+    gps_elev = read_gps_elevations(gps_csv_path)
+
+    merged = tied_profile.merge(
+        gps_elev,
+        on="station",
+        how="left"
+    )
+
+    missing = merged[merged["elevation_m"].isna()]["station"].tolist()
+
+    if len(missing) > 0:
+        print("Warning: missing GPS elevation for these stations:")
+        print(missing)
+
+    return merged, gps_elev
