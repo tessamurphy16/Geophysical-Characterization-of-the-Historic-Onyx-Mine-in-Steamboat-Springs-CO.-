@@ -1,8 +1,5 @@
 # Geophysical Characterization of the Historic Onyx Mine in Steamboat Springs CO.
 
-# Historic Onyx Mine Characterization 
-## Steamboat Springs, CO
-
 Team Members:
 - Molly Bilhartz
 - Samantha Lopez
