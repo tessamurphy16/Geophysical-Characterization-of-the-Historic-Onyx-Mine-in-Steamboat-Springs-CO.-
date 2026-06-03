@@ -8,6 +8,6 @@ Team Members:
 Objective: To characterize mine shafts (void space) in the subsurface through a multi-method geophysical approach
 
  Methods:
-- NS Seismic
+- Refraction Seismic
 - GPR
 - Gravity
