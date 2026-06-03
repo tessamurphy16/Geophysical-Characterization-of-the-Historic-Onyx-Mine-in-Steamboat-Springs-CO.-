@@ -5,7 +5,7 @@ Team Members:
 - Samantha Lopez
 - Tessa Murphy
 
-Objective: To characterize mine shafts (void space) in the subsurface through a multi-method geophysical approach
+Objective: To characterize mine shafts in the subsurface through a multi-method geophysical approach
 
  Methods:
 - Refraction Seismic
