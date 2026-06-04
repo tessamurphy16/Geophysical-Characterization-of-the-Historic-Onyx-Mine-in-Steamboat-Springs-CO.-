@@ -11,9 +11,11 @@
 - Refraction Seismic
 - GPR
 - Gravity
+
 UPDATE: we will not be using the refraction seismic data, it was discovered that the survey line does not cover any mine shafts. 
 
 **About this repository:**
+
 This Git Hub repository includes any relevant data, Jupyter notebooks, figures, resources, and reports that we used or created throughout the course of this project. 
 - The 'data' folder contains all raw and processed data for the 3 methods of interest: GPR, Gravity, and Refraction Seismic, this includes any relevant GPS files.
 - The 'figures' folder holds all of our final figures that are used in reports and presentations.
