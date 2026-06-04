@@ -17,6 +17,6 @@ UPDATE: we will not be using the refraction seismic data, it was discovered that
 This Git Hub repository includes any relevant data, Jupyter notebooks, figures, resources, and reports that we used or created throughout the course of this project. 
 - The 'data' folder contains all raw and processed data for the 3 methods of interest: GPR, Gravity, and Refraction Seismic, this includes any relevant GPS files.
 - The 'figures' folder holds all of our final figures that are used in reports and presentations.
-- The 'notebooks' folder contains relevant jupyter notebooks that are in progress or final, and the relevant python .py files. These are all found within the folders: 'WORKING inypb files', 'FINAL inypb files', and 'PY files'.
+- The 'notebooks' folder contains relevant jupyter notebooks that are in progress or final, and the relevant python .py files. These are all found within the folders: 'WORKING ipynb files', 'FINAL ipynb files', and 'PY files'.
 - The 'relevant resouces' folder holds any sources that we used throughout the course of this project.
 - The 'reports' folder includes our final project report, abstract, and presentation.
