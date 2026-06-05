@@ -12,3 +12,8 @@ __pycache__/
 
 # Anaconda project files
 anaconda_projects/
+*.las
+*.laz
+*.tif
+*.tiff
+data/LiDAR/
