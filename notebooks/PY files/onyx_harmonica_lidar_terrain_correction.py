@@ -199,39 +199,74 @@ def compute_harmonica_terrain_correction(gravity: pd.DataFrame, topo: xr.DataArr
         properties={"density": density},
     )
 
-    # Observation height: use station elevation, but force it slightly above local DEM to avoid point-inside-prism errors.
-    station_topo = topo.interp(
+    # Observation height: use station elevation, but force it slightly above local DEM
+    # to avoid point-inside-prism errors.
+    station_topo_linear = topo.interp(
         easting=("points", gravity["easting_m"].values),
         northing=("points", gravity["northing_m"].values),
         method="linear",
     ).values
-    obs_height = np.maximum(gravity["elevation_m"].values, station_topo + UPWARD_OFFSET_M)
 
-    coordinates = (gravity["easting_m"].values, gravity["northing_m"].values, obs_height)
-    terrain_effect_mgal = prisms.prism_layer.gravity(coordinates, field="g_z")
+    station_topo_nearest = topo.interp(
+        easting=("points", gravity["easting_m"].values),
+        northing=("points", gravity["northing_m"].values),
+        method="nearest",
+    ).values
+
+    station_topo = np.where(
+        np.isfinite(station_topo_linear),
+        station_topo_linear,
+        station_topo_nearest,
+    )
+
+    if np.isnan(station_topo).any():
+        bad = gravity.loc[
+            np.isnan(station_topo),
+            ["station", "longitude", "latitude", "easting_m", "northing_m"],
+        ]
+        raise RuntimeError(
+            "Some gravity stations are outside the DEM coverage or still sample NaN DEM cells:\n"
+            + bad.to_string(index=False)
+        )
+
+    obs_height = np.maximum(
+        gravity["elevation_m"].values,
+        station_topo + UPWARD_OFFSET_M,
+    )
+
+    coordinates = (
+        gravity["easting_m"].values,
+        gravity["northing_m"].values,
+        obs_height,
+    )
+
+    terrain_effect_mgal = prisms.prism_layer.gravity(
+        coordinates,
+        field="g_z",
+    )
 
     out = gravity.copy()
     out["dem_elevation_m_at_station"] = station_topo
     out["obs_height_used_m"] = obs_height
     out["harmonica_topography_effect_mgal"] = terrain_effect_mgal
 
-    # Your existing final gravity is: gravity_tied + free_air - simple_Bouguer.
-    # Replace the slab correction with DEM-forward-modeled topography:
     out["gravity_harmonica_lidar_corrected_mgal"] = (
         out["gravity_tied_mgal"]
         + out["free_air_correction_mgal"]
         - out["harmonica_topography_effect_mgal"]
     )
 
-    # Equivalent way to adjust your already-final simple Bouguer result.
     if "gravity_final_mgal" in out.columns:
         out["harmonica_minus_simple_bouguer_mgal"] = (
-            out["gravity_harmonica_lidar_corrected_mgal"] - out["gravity_final_mgal"]
+            out["gravity_harmonica_lidar_corrected_mgal"]
+            - out["gravity_final_mgal"]
         )
 
     out["simple_bouguer_minus_harmonica_effect_mgal"] = (
-        out["bouguer_correction_mgal"] - out["harmonica_topography_effect_mgal"]
+        out["bouguer_correction_mgal"]
+        - out["harmonica_topography_effect_mgal"]
     )
+
     return out
 
 
