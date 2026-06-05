@@ -10,10 +10,3 @@ __pycache__/
 # VS Code/Jupyter temporary files
 .virtual_documents/
 
-# Anaconda project files
-anaconda_projects/
-*.las
-*.laz
-*.tif
-*.tiff
-data/LiDAR/
