@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE metadata SYSTEM "http://www.fgdc.gov/metadata/fgdc-std-001-1998.dtd"><metadata>
+<idinfo>
+<citation>
+<citeinfo>
+<origin>Merrick &amp; Co</origin>
+<pubdate>20160418</pubdate>
+<title>Contours_2ft</title>
+<geoform>vector digital data</geoform>
+<pubinfo>
+<pubplace>Greenwood Village, CO</pubplace>
+<publish>Merrick &amp; Co.</publish>
+</pubinfo>
+<onlink>\\filter25-wks\E\Moffat\Moffat_topo_93.gdb</onlink>
+</citeinfo>
+</citation>
+<descript>
+<abstract>Two-foot interval contours were created from the ground LIDAR points and breaklines. A 2.5-foot grid with a two pass filter was applied to smooth the contours.</abstract>
+<purpose>Merrick &amp; Company (Merrick) to provide Amec with LiDAR terrain mapping to the Colorado Water Conservation Board
+(CWCB) for portions of Routt and Moffat Counties, Colorado situated along the Yampa River Valley.</purpose>
+</descript>
+<timeperd>
+<timeinfo>
+<rngdates>
+<begdate>20151014</begdate>
+<begtime>unknown</begtime>
+<enddate>20151028</enddate>
+<endtime>unknown</endtime>
+</rngdates>
+</timeinfo>
+<current>ground condition</current>
+</timeperd>
+<status>
+<progress>Complete</progress>
+<update>Unknown</update>
+</status>
+<spdom>
+<bounding>
+<westbc>
+-107.690161</westbc>
+<eastbc>
+-106.847928</eastbc>
+<northbc>
+40.828444</northbc>
+<southbc>
+40.098128</southbc>
+</bounding>
+</spdom>
+<keywords>
+<theme>
+<themekt>None</themekt>
+<themekey>LIDAR</themekey>
+<themekey>Contours</themekey>
+<themekey>Breaklines</themekey>
+<themekey>DEM</themekey>
+</theme>
+<place>
+<placekt>None</placekt>
+<placekey>Moffat Co</placekey>
+<placekey>Colorado</placekey>
+</place>
+<temporal>
+<tempkt>None</tempkt>
+<tempkey>2015</tempkey>
+</temporal>
+</keywords>
+<accconst>Unknown</accconst>
+<useconst>Unknown</useconst>
+<ptcontac>
+<cntinfo>
+<cntperp>
+<cntper>Thuy Patton</cntper>
+<cntorg>Colorado Water Conservation Board</cntorg>
+</cntperp>
+<cntpos>Floodplain Mapping Coordinator</cntpos>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>1313 Sherman St., Rm. 718</address>
+<city>Denver</city>
+<state>Co</state>
+<postal>80203</postal>
+</cntaddr>
+<cntvoice>303-866-3441 x3230</cntvoice>
+<cntemail>thuy.patton@state.co.us</cntemail>
+</cntinfo>
+</ptcontac>
+<native>Microsoft Windows Vista Version 6.1 (Build 7601) Service Pack 1; ESRI ArcCatalog 9.3.1.4095</native>
+</idinfo>
+<dataqual>
+<attracc>
+<attraccr>Verification of attribute accuracy for LiDAR data involves the use of filtering techniques.  Auto-filtering uses algorithms to reclassify data in the point cloud.  Hand-filtering involves the analysis of a technician working in a graphic environment to reclassify the erroneous points that may remain in the LiDAR point cloud after auto-filter.</attraccr>
+</attracc>
+<logic>Calibrations of the LiDAR flightline data are performed; this process is known as boresighting.  The flightlines are compared to evaluate both their relative and absolute accuracies.</logic>
+<complete>The dataset was reviewed to ensure completeness and accuracy.</complete>
+<posacc>
+<horizpa>
+<horizpar>This data set was produced to meet ASPRS Positional Accuracy Standards for Digital Geospatial Data (2014) for a 1.25ft RMSEx / RMSEy Horizontal Accuracy Class which equates to Positional Horizontal Accuracy = +/- 2.16 at a 95% confidence level.</horizpar>
+</horizpa>
+<vertacc>
+<vertaccr>Vertical elevation will meet or exceed 0.328ft RMSE (Accuracyz = 0.64ft at the 95% confidence level)</vertaccr>
+<qvertpa>
+<vertaccv>0.111 feet</vertaccv>
+<vertacce>Forty-five NVA ground control points were used to determine the 0.111 feet RMSEz value</vertacce>
+</qvertpa>
+</vertacc>
+</posacc>
+<lineage>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>Merrick &amp; Co</origin>
+<pubdate>2015</pubdate>
+<pubtime>Unknown</pubtime>
+<title>Ground Control</title>
+<geoform>spreadsheet</geoform>
+<serinfo>
+<sername>Ground Control</sername>
+<issue>Ground Control</issue>
+</serinfo>
+<pubinfo>
+<pubplace>Greenwood Village, Co</pubplace>
+<publish>Merrick &amp; Co</publish>
+</pubinfo>
+</citeinfo>
+</srccite>
+<srcscale>1200</srcscale>
+<typesrc>disc</typesrc>
+<srctime>
+<timeinfo>
+<sngdate>
+<caldate>2015</caldate>
+<time>unknown</time>
+</sngdate>
+</timeinfo>
+<srccurr>ground condition</srccurr>
+</srctime>
+<srccitea>Ground Control</srccitea>
+<srccontr>Merrick will establish a total (minimum) of one hundred twenty (120) LiDAR checkpoints, which will be used to validate the
+accuracy of the LiDAR point cloud. Of the 120 checkpoints, sixty-seven (67) checkpoints will categorized as Non-vegetated
+Vertical Accuracy [NVA] checkpoints, and fifty-three (53) will be of the Vegetated Vertical Accuracy [VVA] checkpoint
+variety. Theses represent the minimum standards as outlined in TM11-B4 / ASPRS Positional Accuracy Standards for
+Digital Geospatial Data (EDITION 1, VERSION 1.0. - NOVEMBER, 2014). The NVA and VVA checkpoints will be
+spatially distributed across the project area.</srccontr>
+</srcinfo>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>Merrick &amp; Co</origin>
+<pubdate>20160415</pubdate>
+<pubtime>Unknown</pubtime>
+<title>LIDAR</title>
+<geoform>LAS</geoform>
+<serinfo>
+<sername>LIDAR</sername>
+<issue>LIDAR</issue>
+</serinfo>
+<pubinfo>
+<pubplace>Greenwood Village, Co</pubplace>
+<publish>Merrick &amp; Co</publish>
+</pubinfo>
+</citeinfo>
+</srccite>
+<srcscale>1200</srcscale>
+<typesrc>disc</typesrc>
+<srctime>
+<timeinfo>
+<rngdates>
+<begdate>20151014</begdate>
+<begtime>unknown</begtime>
+<enddate>20151028</enddate>
+<endtime>unknown</endtime>
+</rngdates>
+</timeinfo>
+<srccurr>ground condition</srccurr>
+</srctime>
+<srccitea>LIDAR</srccitea>
+<srccontr>ASPRS LAS 1.4</srccontr>
+</srcinfo>
+<procstep>
+<procdesc>Using MARS software two-foot interval contour files were exported by tile in ESRI shape file format. A 2.5-foot gridded surface with a two pass filter was applied to smooth the contours. The shape files were merged into a single  project wide contour feature class and topology rules were applied (checked for dangles, overlaps and intersections).</procdesc>
+<procdate>20160420</procdate>
+<proctime>09362800</proctime>
+<proccont>
+<cntinfo>
+<cntperp>
+<cntper>Doug Jacoby</cntper>
+<cntorg>Merrick &amp; Co</cntorg>
+</cntperp>
+<cntpos>Project manager</cntpos>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>5970 Greenwood Plaza Blvd.</address>
+<city>Greenwood Village</city>
+<state>Co</state>
+<postal>80111</postal>
+</cntaddr>
+<cntvoice>303-353-3903</cntvoice>
+<cntemail>doug.jacoby@merrick.com</cntemail>
+</cntinfo>
+</proccont>
+</procstep>
+</lineage>
+</dataqual>
+<spdoinfo>
+<direct>Vector</direct>
+<ptvctinf>
+<sdtsterm>
+<sdtstype>String</sdtstype>
+<ptvctcnt>1488459</ptvctcnt>
+</sdtsterm>
+</ptvctinf>
+</spdoinfo>
+<spref>
+<horizsys>
+<planar>
+<mapproj>
+<mapprojn>Lambert Conformal Conic</mapprojn>
+<lambertc>
+<stdparll>39.716667</stdparll>
+<stdparll>40.783333</stdparll>
+<longcm>-105.500000</longcm>
+<latprjo>39.333333</latprjo>
+<feast>3000000.000316</feast>
+<fnorth>999999.999996</fnorth>
+</lambertc>
+</mapproj>
+<planci>
+<plance>coordinate pair</plance>
+<coordrep>
+<absres>0.000328</absres>
+<ordres>0.000328</ordres>
+</coordrep>
+<plandu>survey feet</plandu>
+</planci>
+</planar>
+<geodetic>
+<horizdn>D_NAD_1983_2011</horizdn>
+<ellips>Geodetic Reference System 80</ellips>
+<semiaxis>6378137.000000</semiaxis>
+<denflat>298.257222</denflat>
+</geodetic>
+</horizsys>
+<vertdef>
+<altsys>
+<altdatum>North American Vertical Datum of 1988</altdatum>
+<altres>0.000100</altres>
+<altunits>feet</altunits>
+<altenc>Explicit elevation coordinate included with horizontal coordinates</altenc>
+</altsys>
+</vertdef>
+</spref>
+<eainfo>
+<detailed>
+<enttyp>
+<enttypl>
+Contours_2ft</enttypl>
+<enttypd>Contours_2ft</enttypd>
+<enttypds>Merrick &amp; Co</enttypds>
+</enttyp>
+<attr>
+<attrlabl>OBJECTID</attrlabl>
+<attrdef>Internal feature number.</attrdef>
+<attrdefs>ESRI</attrdefs>
+<attrdomv>
+<udom>Sequential unique whole numbers that are automatically generated.</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>Shape</attrlabl>
+<attrdef>Feature geometry.</attrdef>
+<attrdefs>ESRI</attrdefs>
+<attrdomv>
+<udom>Coordinates defining the features.</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>Ftype</attrlabl>
+<attrdef>Ftype</attrdef>
+<attrdefs>Merrick &amp; Co</attrdefs>
+<attrdomv>
+<udom>Ftype</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>Elev</attrlabl>
+<attrdef>Elevation</attrdef>
+<attrdefs>Merrick &amp; Co</attrdefs>
+<attrdomv>
+<udom>Elevation</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>Shape_Length</attrlabl>
+<attrdef>Length of feature in internal units.</attrdef>
+<attrdefs>ESRI</attrdefs>
+<attrdomv>
+<udom>Positive real numbers that are automatically generated.</udom>
+</attrdomv>
+</attr>
+</detailed>
+</eainfo>
+<metainfo>
+<metd>20160420</metd>
+<metc>
+<cntinfo>
+<cntorgp>
+<cntorg>Colorado Water Conservation Board</cntorg>
+<cntper>Thuy Patton</cntper>
+</cntorgp>
+<cntpos>Floodplain Mapping Coordinator</cntpos>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>1313 Sherman St., Rm. 718</address>
+<city>Denver</city>
+<state>Co</state>
+<postal>80203</postal>
+</cntaddr>
+<cntvoice>303-866-3441 x3230</cntvoice>
+<cntemail>thuy.patton@state.co.us</cntemail>
+</cntinfo>
+</metc>
+<metstdn>FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+<metstdv>FGDC-STD-001-1998</metstdv>
+<mettc>local time</mettc>
+<metextns>
+<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+<metprof>ESRI Metadata Profile</metprof>
+</metextns>
+<metextns>
+<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+<metprof>ESRI Metadata Profile</metprof>
+</metextns>
+</metainfo>
+</metadata>
