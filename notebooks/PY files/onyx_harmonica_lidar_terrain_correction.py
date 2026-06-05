@@ -26,19 +26,12 @@ import xarray as xr
 import harmonica as hm
 
 # ------------------------- USER SETTINGS -------------------------
-DATA_DIR = Path("/mnt/data")  # change to Path.cwd() if running locally beside the files
+GRAVITY_CSV = None
+GPS_CSV = None
+DEM_TILES = None
 
-GRAVITY_CSV = DATA_DIR / "Onyx_Gravity_Final_Bouguer_Corrected.csv"
-GPS_CSV = DATA_DIR / "gps_points_with_elevation.csv"  # optional but useful for checking GPS elevations
-DEM_TILES = [
-    DATA_DIR / "LD26231421.tif",
-    DATA_DIR / "LD26231424.tif",
-    DATA_DIR / "LD26261421.tif",
-    DATA_DIR / "LD26261424.tif",
-]
-
-OUT_CSV = DATA_DIR / "Onyx_Gravity_Harmonica_LiDAR_Terrain_Corrected.csv"
-OUT_DEM = DATA_DIR / "Onyx_LiDAR_DEM_UTM13N_meters.tif"
+OUT_CSV = None
+OUT_DEM = None
 
 # LiDAR tiles are EPSG:6430, horizontal units = US survey feet; elevation values also appear to be feet.
 DST_CRS = "EPSG:26913"       # UTM zone 13N, meters, appropriate for lon ~ -106.8, lat ~ 40.5
