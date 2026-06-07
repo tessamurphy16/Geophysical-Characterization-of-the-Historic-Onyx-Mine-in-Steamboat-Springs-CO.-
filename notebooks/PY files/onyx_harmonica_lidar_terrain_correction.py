@@ -195,7 +195,7 @@ def compute_harmonica_terrain_correction(gravity: pd.DataFrame, topo: xr.DataArr
     prisms = hm.prism_layer(
         coordinates=(topo.easting, topo.northing),
         surface=topo,
-        reference=0.0,
+        reference=float(np.nanmean(gravity["elevation_m"])),
         properties={"density": density},
     )
 
