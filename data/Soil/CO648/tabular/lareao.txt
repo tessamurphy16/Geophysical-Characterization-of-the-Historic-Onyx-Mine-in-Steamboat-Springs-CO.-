@@ -1,0 +1,5 @@
+"County or Parish"|"CO103"|"Rio Blanco"|16235|"14381"|"606766"
+"County or Parish"|"CO107"|"Routt"|890415|"14381"|"606767"
+"MLRA"|"48A"|"Southern Rocky Mountains"|783686|"14381"|"606768"
+"MLRA"|"34A"|"Cool Central Desertic Basins and Plateaus"|122964|"14381"|"606769"
+"State or Territory"|"CO"|"Colorado"|906650|"14381"|"606770"
