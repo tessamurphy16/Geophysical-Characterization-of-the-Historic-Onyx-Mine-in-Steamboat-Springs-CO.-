@@ -190,17 +190,10 @@ def merge_crop_reproject_dem(gravity: pd.DataFrame) -> tuple[xr.DataArray, pd.Da
 
 def compute_harmonica_terrain_correction(gravity: pd.DataFrame, topo: xr.DataArray) -> pd.DataFrame:
     """Build Harmonica prism layer and compute DEM-derived terrain/topographic effect."""
-    density = xr.full_like(topo, fill_value=DENSITY_KG_M3, dtype=float)
 
-    prisms = hm.prism_layer(
-        coordinates=(topo.easting, topo.northing),
-        surface=topo,
-        reference=float(np.nanmean(gravity["elevation_m"])),
-        properties={"density": density},
-    )
-
-    # Observation height: use station elevation, but force it slightly above local DEM
-    # to avoid point-inside-prism errors.
+    # -----------------------------
+    # 1. Sample DEM at gravity stations first
+    # -----------------------------
     station_topo_linear = topo.interp(
         easting=("points", gravity["easting_m"].values),
         northing=("points", gravity["northing_m"].values),
@@ -229,10 +222,56 @@ def compute_harmonica_terrain_correction(gravity: pd.DataFrame, topo: xr.DataArr
             + bad.to_string(index=False)
         )
 
-    obs_height = np.maximum(
-        gravity["elevation_m"].values,
-        station_topo + UPWARD_OFFSET_M,
+    # -----------------------------
+    # 2. Align DEM vertically to GPS/station elevations
+    # -----------------------------
+    vertical_bias = np.nanmedian(
+        gravity["elevation_m"].values - station_topo
     )
+
+    topo_aligned = topo + vertical_bias
+    station_topo_aligned = station_topo + vertical_bias
+
+    print("Applied DEM vertical shift:", vertical_bias, "m")
+
+    # -----------------------------
+    # 3. QC DEM vs GPS after alignment
+    # -----------------------------
+    gps_minus_dem = gravity["elevation_m"].values - station_topo_aligned
+
+    qc = gravity[["station", "elevation_m"]].copy()
+    qc["dem_elevation_m_at_station"] = station_topo_aligned
+    qc["gps_minus_dem_elevation_m"] = gps_minus_dem
+
+    print(qc)
+
+    if np.nanmedian(np.abs(gps_minus_dem)) > 2:
+        raise ValueError(
+            "DEM and GPS elevations still disagree by more than ~2 m after vertical alignment. "
+            "Check CRS, GPS coordinates, DEM units, and station locations before applying terrain correction."
+        )
+
+    # -----------------------------
+    # 4. Build prism layer using aligned DEM
+    # -----------------------------
+    density = xr.full_like(topo_aligned, fill_value=DENSITY_KG_M3, dtype=float)
+
+    if "reference_elevation_m" in gravity.columns:
+        reference_elevation = float(gravity["reference_elevation_m"].iloc[0])
+    else:
+        reference_elevation = float(gravity["elevation_m"].min())
+
+    prisms = hm.prism_layer(
+        coordinates=(topo_aligned.easting, topo_aligned.northing),
+        surface=topo_aligned,
+        reference=reference_elevation,
+        properties={"density": density},
+    )
+
+    # -----------------------------
+    # 5. Observation height: use actual station elevation
+    # -----------------------------
+    obs_height = gravity["elevation_m"].values + UPWARD_OFFSET_M
 
     coordinates = (
         gravity["easting_m"].values,
@@ -245,21 +284,37 @@ def compute_harmonica_terrain_correction(gravity: pd.DataFrame, topo: xr.DataArr
         field="g_z",
     )
 
+    # -----------------------------
+    # 6. Apply correction
+    # -----------------------------
     out = gravity.copy()
-    out["dem_elevation_m_at_station"] = station_topo
+    out["dem_elevation_m_at_station_raw"] = station_topo
+    out["dem_vertical_shift_m"] = vertical_bias
+    out["dem_elevation_m_at_station"] = station_topo_aligned
+    out["gps_minus_dem_elevation_m"] = gps_minus_dem
     out["obs_height_used_m"] = obs_height
     out["harmonica_topography_effect_mgal"] = terrain_effect_mgal
 
-    out["gravity_harmonica_lidar_corrected_mgal"] = (
-        out["gravity_tied_mgal"]
-        + out["free_air_correction_mgal"]
+    out["terrain_correction_mgal"] = (
+        out["bouguer_correction_mgal"]
         - out["harmonica_topography_effect_mgal"]
     )
 
     if "gravity_final_mgal" in out.columns:
+        out["gravity_harmonica_lidar_corrected_mgal"] = (
+            out["gravity_final_mgal"]
+            + out["terrain_correction_mgal"]
+        )
+
         out["harmonica_minus_simple_bouguer_mgal"] = (
             out["gravity_harmonica_lidar_corrected_mgal"]
             - out["gravity_final_mgal"]
+        )
+    else:
+        out["gravity_harmonica_lidar_corrected_mgal"] = (
+            out["gravity_tied_mgal"]
+            + out["free_air_correction_mgal"]
+            - out["harmonica_topography_effect_mgal"]
         )
 
     out["simple_bouguer_minus_harmonica_effect_mgal"] = (
@@ -268,7 +323,6 @@ def compute_harmonica_terrain_correction(gravity: pd.DataFrame, topo: xr.DataArr
     )
 
     return out
-
 
 def plot_qc(out: pd.DataFrame) -> None:
     """Basic QC plots."""
