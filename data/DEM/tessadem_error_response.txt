@@ -1,6 +1,0 @@
-{
-    "error": {
-        "type": "INVALID_API_KEY",
-        "message": "The API key is invalid."
-    }
-}
