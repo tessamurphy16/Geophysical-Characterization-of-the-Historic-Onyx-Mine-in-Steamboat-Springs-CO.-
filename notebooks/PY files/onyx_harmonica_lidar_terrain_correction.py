@@ -253,13 +253,18 @@ def compute_harmonica_terrain_correction(gravity: pd.DataFrame, topo: xr.DataArr
 
     # -----------------------------
     # 4. Build prism layer using aligned DEM
-    # -----------------------------
-    density = xr.full_like(topo_aligned, fill_value=DENSITY_KG_M3, dtype=float)
+    # ---------------------------
 
     if "reference_elevation_m" in gravity.columns:
         reference_elevation = float(gravity["reference_elevation_m"].iloc[0])
     else:
         reference_elevation = float(gravity["elevation_m"].min())
+
+    density = xr.where(
+        topo_aligned >= reference_elevation,
+        DENSITY_KG_M3,
+        -DENSITY_KG_M3,
+    )
 
     prisms = hm.prism_layer(
         coordinates=(topo_aligned.easting, topo_aligned.northing),
@@ -279,10 +284,12 @@ def compute_harmonica_terrain_correction(gravity: pd.DataFrame, topo: xr.DataArr
         obs_height,
     )
 
-    terrain_effect_mgal = prisms.prism_layer.gravity(
+    harmonica_gz_mgal = prisms.prism_layer.gravity(
         coordinates,
         field="g_z",
     )
+    
+    terrain_effect_mgal =  harmonica_gz_mgal
 
     # -----------------------------
     # 6. Apply correction
@@ -294,35 +301,16 @@ def compute_harmonica_terrain_correction(gravity: pd.DataFrame, topo: xr.DataArr
     out["gps_minus_dem_elevation_m"] = gps_minus_dem
     out["obs_height_used_m"] = obs_height
     out["harmonica_topography_effect_mgal"] = terrain_effect_mgal
-
-    out["terrain_correction_mgal"] = (
-        out["bouguer_correction_mgal"]
+    
+    # Remove the modeled terrain effect after free-air correction
+    out["gravity_harmonica_lidar_corrected_mgal"] = (
+        out["gravity_tied_mgal"]
+        + out["free_air_correction_mgal"]
         - out["harmonica_topography_effect_mgal"]
     )
-
-    if "gravity_final_mgal" in out.columns:
-        out["gravity_harmonica_lidar_corrected_mgal"] = (
-            out["gravity_final_mgal"]
-            + out["terrain_correction_mgal"]
-        )
-
-        out["harmonica_minus_simple_bouguer_mgal"] = (
-            out["gravity_harmonica_lidar_corrected_mgal"]
-            - out["gravity_final_mgal"]
-        )
-    else:
-        out["gravity_harmonica_lidar_corrected_mgal"] = (
-            out["gravity_tied_mgal"]
-            + out["free_air_correction_mgal"]
-            - out["harmonica_topography_effect_mgal"]
-        )
-
-    out["simple_bouguer_minus_harmonica_effect_mgal"] = (
-        out["bouguer_correction_mgal"]
-        - out["harmonica_topography_effect_mgal"]
-    )
-
+    
     return out
+        
 
 def plot_qc(out: pd.DataFrame) -> None:
     """Basic QC plots."""
